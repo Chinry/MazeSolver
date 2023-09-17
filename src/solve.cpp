@@ -89,6 +89,38 @@ Coord findCell(Maze &m, cellType t)
 bool solve(Maze &m)
 {
     std::stack<Coord> path;
-    std::stack<Coord> decisions;
+    Coord start = findCell(m, START_CELL);
+    path.push(start);
+    m.array[start.y][start.x].marked = true;
+
+    while(m.array[path.top().y][path.top().x].type != END_CELL)
+    {
+        std::vector<Coord> adj = getAdjacent(m, path.top());
+        bool found = false;
+        for(Coord c : adj)
+        {
+            if(!m.array[c.y][c.x].marked)
+            {
+                m.array[c.y][c.x].marked = true;
+                path.push(c);
+                found = true;
+                break;
+            }
+        }
+        if (!found)
+        {
+            path.pop();
+        }
+        if (path.empty())
+        {
+            return false;
+        }
+    }
+    while(!path.empty())
+    {
+        m.path.push_back(path.top());
+        path.pop();
+    }
+
     return true;
 }
