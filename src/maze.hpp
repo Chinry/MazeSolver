@@ -1,9 +1,11 @@
+#pragma once
+
 #include <vector>
 
 struct Coord
 {
-    int x;
-    int y;
+    int x = 0;
+    int y = 0;
 };
 
 enum cellType
@@ -21,6 +23,7 @@ struct Maze
 {
     std::vector<std::vector<Cell>> array;
     std::vector<Coord> path;
+    void setSize(int x, int y);
     bool finishPlaced = false;
     bool startPlaced = false;
     void resetMarked();

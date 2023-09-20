@@ -88,6 +88,7 @@ Coord findCell(Maze &m, cellType t)
 
 bool solve(Maze &m)
 {
+    m.resetMarked();
     std::stack<Coord> path;
     Coord start = findCell(m, START_CELL);
     path.push(start);

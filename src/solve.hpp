@@ -1,3 +1,5 @@
+#pragma once
+
 #include "maze.hpp"
 #include <vector>
 
