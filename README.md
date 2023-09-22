@@ -1,8 +1,8 @@
 # MazeSolver
 A simple maze solving desktop application.
 
-![image](/unsolved.jpg)
-![image](/solved.jpg)
+![image](/unsolved.png)
+![image](/solved.png)
 # Usage
 Navigate the Cursor with the arrow keys. Use Space to change the tile. Pressing Enter solves the maze.
 
