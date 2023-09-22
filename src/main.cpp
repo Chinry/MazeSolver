@@ -17,7 +17,6 @@ int main(int argc, char *argv[])
     int x = std::stoi(argv[1]);
     int y = std::stoi(argv[2]);
 
-    sf::Clock clock;
     Graphics g(x,y);
     Maze m;
     Coord c;
@@ -27,11 +26,7 @@ int main(int argc, char *argv[])
     {
         Input::process(m, c);
         g.process(m, c);
-        while(clock.getElapsedTime().asMilliseconds() > 500)
-        {
-            sf::sleep(sf::milliseconds(40));
-        }
-        clock.restart();
+        sf::sleep(sf::milliseconds(50));
     }
 
 }

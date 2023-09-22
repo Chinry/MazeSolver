@@ -13,4 +13,5 @@ private:
     sf::RenderWindow window;
     void drawGrid(Maze &m);
     void drawCursor(Coord &c);
+    void drawPath(Maze &m);
 };

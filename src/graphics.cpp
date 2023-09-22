@@ -3,8 +3,7 @@
 
 Graphics::Graphics(int x, int y)
 {
-    window.setSize(sf::Vector2u(x*20, y*20));
-    window.setTitle("Maze");
+    window.create(sf::VideoMode(x*20, y*20), "Maze");
 }
 
 bool Graphics::isOpen()
@@ -45,7 +44,7 @@ void Graphics::drawGrid(Maze &m)
 void Graphics::drawCursor(Coord &c)
 {
     sf::RectangleShape curs(sf::Vector2f(20.f, 20.f));
-    curs.setFillColor(sf::Color(255,255,255));
+    curs.setFillColor(sf::Color::Transparent);
     curs.setOutlineColor(sf::Color(0,0,255));
     curs.setOutlineThickness(5.f);
     curs.setPosition(c.x * 20, c.y * 20);
@@ -54,6 +53,20 @@ void Graphics::drawCursor(Coord &c)
 
 void Graphics::process(Maze &m, Coord &c)
 {
+    window.clear(sf::Color::White);
     drawGrid(m);
     drawCursor(c);
+    drawPath(m);
+    window.display();
+}
+
+void Graphics::drawPath(Maze &m)
+{
+    sf::CircleShape circle(10.f);
+    circle.setFillColor(sf::Color(100, 100, 0));
+    for(Coord &c : m.path)
+    {
+        circle.setPosition(c.y * 20, c.x * 20);
+        window.draw(circle);
+    }
 }
